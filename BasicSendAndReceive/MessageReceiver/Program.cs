@@ -18,7 +18,7 @@ namespace MessageReceiver
             {
                 using (IModel channel = connection.CreateModel())
                 {
-                    string queueName = "simon-queue";
+                    string queueName = "demo-queue";
 
                     channel.QueueDeclare(
                         queue: queueName,
