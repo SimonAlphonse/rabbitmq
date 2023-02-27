@@ -20,7 +20,7 @@ namespace MessageSender
                 {
                     using (IModel channel = connection.CreateModel())
                     {
-                        string queueName = "simon-queue";
+                        string queueName = "demo-queue";
 
                         channel.QueueDeclare(
                             queue: queueName,
@@ -29,7 +29,7 @@ namespace MessageSender
                             autoDelete: false,
                             arguments: null);
 
-                        var message = new { Name = "Simon", Message = $"Message created at {DateTime.Now:MMM-dd hh:mm:ss.ff}" };
+                        var message = new { Name = "Hello World", Message = $"Message created at {DateTime.Now:MMM-dd hh:mm:ss.ff}" };
                         byte[] messageBytes = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(message));
                         Console.WriteLine(message.Message);
                         channel.BasicPublish(string.Empty, queueName, null, messageBytes);
